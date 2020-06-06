@@ -1,4 +1,4 @@
-if exists('b:loaded_blogdown_ftplugin') || !exists('b:is_blog') || &cp
+if exists('b:loaded_blogdown_ftplugin') || !exists('b:is_blog')
   finish
 endif
 
@@ -10,6 +10,16 @@ command! BlogdownEditPost call <SID>EditPost(g:blogdown_content_dir, 'edit')
 command! BlogdownTabEditPost call <SID>EditPost(g:blogdown_content_dir, 'tabedit')
 command! BlogdownVertSplitPost call <SID>EditPost(g:blogdown_content_dir, 'vsplit')
 command! BlogdownHoriSplitPost call <SID>EditPost(g:blogdown_content_dir, 'split')
+
+
+" Mappings --------------------------------------------------------------------
+if g:blogdown_map_edit_post
+    nnoremap <leader>e :BlogdownEditPost<CR>
+    nnoremap <leader>t :BlogdownTabEditPost<CR>
+    nnoremap <leader>/ :BlogdownHoriSplitPost<CR>
+    nnoremap <leader>\ :BlogdownVertSplitPost<CR>
+endif
+
 
 
 " Functions -------------------------------------------------------------------
