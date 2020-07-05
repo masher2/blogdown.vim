@@ -1,16 +1,26 @@
-if exists('b:loaded_blogdown_ftplugin') || !exists('b:is_blog')
+" Blogdown plugin
+" vim: foldmethod=marker
+if exists('g:loaded_blogdown_ftplugin') || !exists('b:is_blog')
   finish
 endif
 
-let b:loaded_blogdown_ftplugin = 1
+let g:loaded_blogdown_ftplugin = 1
 
 
 " Commands --------------------------------------------------------------------
+" function calls {{{1
+
 command! BlogdownEditPost call <SID>EditPost(g:blogdown_content_dir, 'edit')
 command! BlogdownTabEditPost call <SID>EditPost(g:blogdown_content_dir, 'tabedit')
 command! BlogdownVertSplitPost call <SID>EditPost(g:blogdown_content_dir, 'vsplit')
 command! BlogdownHoriSplitPost call <SID>EditPost(g:blogdown_content_dir, 'split')
 
+"}}}
+" direct blogdown calls: {{{1
+
+command! BlogdownBuildSite execute ":! Rscript -e 'blogdown::build_site()'"
+
+"}}}
 
 " Mappings --------------------------------------------------------------------
 if g:blogdown_map_edit_post
@@ -19,7 +29,6 @@ if g:blogdown_map_edit_post
     nnoremap <leader>/ :BlogdownHoriSplitPost<CR>
     nnoremap <leader>\ :BlogdownVertSplitPost<CR>
 endif
-
 
 
 " Functions -------------------------------------------------------------------
