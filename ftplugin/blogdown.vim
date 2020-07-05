@@ -18,7 +18,8 @@ command! BlogdownHoriSplitPost call <SID>EditPost(g:blogdown_content_dir, 'split
 "}}}
 " direct blogdown calls: {{{1
 
-command! BlogdownBuildSite execute ":! Rscript -e 'blogdown::build_site()'"
+command! BlogdownBuildSite execute ":! Rscript -e 'blogdown::hugo_build()'"
+command! BlogdownBuildSite2 execute ":! Rscript -e 'blogdown::build_site()'"
 
 "}}}
 
